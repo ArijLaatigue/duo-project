@@ -1,0 +1,153 @@
+*{
+    box-sizing: border-box;
+}
+@font-face{
+    font-family: "score";
+    src:url("fonts/Berkshire_Swash/BerkshireSwash-Regular.ttf") format("ttf");
+}
+@font-face{
+    font-family: "title";
+    src:url("fonts/vintage-wheel-font/misc/Vintage\ Wheel\ Free\ Trial-82ce.woff") format("woff");
+}
+
+body{
+    margin:0;
+    background: radial-gradient( #e6e6fa,rgb(108, 88, 124) );
+    background-image: url("css\ images/1624.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+  
+}
+
+.game-title{
+    color:#facd31;
+    font-family: title  , serif;
+    text-align: center;
+    font-size: 89px;
+    font-weight: normal;
+    
+}
+ 
+.game-info{
+    color:#facd31;
+    font-family: title , serif;
+font-size: 89px;
+    
+    
+
+}
+
+.card{
+   
+    position: relative;
+    height: 175px;
+    width: 125px;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.game-container{
+    display: grid;
+    grid-template-columns: repeat(4,auto);
+    grid-gap: 10px;
+    margin: 50px;
+    justify-content: center;
+    perspective: 500px;
+
+}
+
+.game-info-container{
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: space-between;
+}
+.card-face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    backface-visibility: hidden;
+    transition: transform 500ms ease-in-out;
+
+    
+}
+.card-back{
+    background-color: black;
+    border-color: paleturquoise;
+}
+.card.visible .card-back{
+    transform: rotateY(-180deg);
+}
+.card.visible .card-front{
+     transform: rotateY(0) ;
+}
+.image-back{
+    position: absolute;
+    width: 100%;
+    height:100%;
+}
+.image-front{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.card-front{
+    transform: rotateY(180deg);
+}
+.card-value{
+    transform: scale(0.9);
+}
+.card-front:hover .card-value{
+transform:scale(1)
+}
+
+.overlay-text{
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+ color:#facd31;
+ font-family: title , serif;
+ 
+     
+ }
+ .overlay-text-small{
+     font-size: 89px;
+    
+ }
+ .overlay-text.visible{
+     display: flex;
+     flex-direction: column;
+     animation: overlay-grow 500ms forwards;
+ }
+ .card-matched .card-value{
+
+ }
+
+ @keyframes overlay-grow{
+ from{
+     background-color: rgba(0, 0, 0, 0);
+     font-size:0;
+ }
+ to{
+     background-color: rgba(0, 0, 0, 0.6);
+     font-size: 150px;
+ }
+ }
+ @media (max-width:600px){
+     .game-container{flex-direction: column;
+    align-items: center;
+  }
+ }
